@@ -1,0 +1,265 @@
+%AerE 160 Matlab Lab 2
+%Matthew E. Nelson
+%Solution/TA Copy
+
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{multicol}
+\usepackage{fancyhdr} % Required for custom headers
+\usepackage{lastpage} % Required to determine the last page for the footer
+\usepackage{extramarks} % Required for headers and footers
+\usepackage[usenames,dvipsnames]{color} % Required for custom colors
+\usepackage{graphicx} % Required to insert images
+\usepackage{listings} % Required for insertion of code
+%\author{Matthew E. Nelson}
+%\title{AerE 160 Practice Problems}
+
+% Set up the header and footer
+\pagestyle{fancy}
+\lhead{\hmwkAuthorName} % Top left header
+\chead{\hmwkClass\ (\hmwkClassInstructor\ \hmwkClassTime): \hmwkTitle} % Top center head
+\rhead{\firstxmark} % Top right header
+\lfoot{\lastxmark} % Bottom left footer
+\cfoot{} % Bottom center footer
+\rfoot{Page\ \thepage\ of\ \protect\pageref{LastPage}} % Bottom right footer
+\renewcommand\headrulewidth{0.4pt} % Size of the header rule
+\renewcommand\footrulewidth{0.4pt} % Size of the footer rule
+
+\setlength\parindent{0pt} % Removes all indentation from paragraphs
+
+%----------------------------------------------------------------------------------------
+%	CODE INCLUSION CONFIGURATION
+%----------------------------------------------------------------------------------------
+
+\definecolor{MyDarkGreen}{rgb}{0.0,0.4,0.0} % This is the color used for comments
+\lstloadlanguages{Matlab} % for a list of other languages supported see: ftp://ftp.tex.ac.uk/tex-archive/macros/latex/contrib/listings/listings.pdf
+\lstset{language=Matlab, % Use Matlab
+        frame=single, % Single frame around code
+        basicstyle=\small\ttfamily, % Use small true type font
+        keywordstyle=[1]\color{Blue}\bf, % Perl functions bold and blue
+        keywordstyle=[2]\color{Purple}, % Perl function arguments purple
+        keywordstyle=[3]\color{Blue}\underbar, % Custom functions underlined and blue
+        identifierstyle=, % Nothing special about identifiers                                         
+        commentstyle=\usefont{T1}{pcr}{m}{sl}\color{MyDarkGreen}\small, % Comments small dark green courier font
+        stringstyle=\color{Purple}, % Strings are purple
+        showstringspaces=false, % Don't put marks in string spaces
+        tabsize=5, % 5 spaces per tab
+        %
+        % Put standard Perl functions not included in the default language here
+        morekeywords={rand},
+        %
+        % Put Perl function parameters here
+        morekeywords=[2]{on, off, interp},
+        %
+        % Put user defined functions here
+        morekeywords=[3]{test},
+       	%
+        morecomment=[l][\color{Blue}]{...}, % Line continuation (...) like blue comment
+        numbers=left, % Line numbers on left
+        firstnumber=1, % Line numbers start with line 1
+        numberstyle=\tiny\color{Blue}, % Line numbers are blue and small
+        stepnumber=5 % Line numbers go in steps of 5
+}
+
+%----------------------------------------------------------------------------------------
+%	DOCUMENT STRUCTURE COMMANDS
+%	Skip this unless you know what you're doing
+%----------------------------------------------------------------------------------------
+
+% Header and footer for when a page split occurs within a problem environment
+\newcommand{\enterProblemHeader}[1]{
+\nobreak\extramarks{#1}{#1 continued on next page\ldots}\nobreak
+\nobreak\extramarks{#1 (cont.)}{#1 continued on next page\ldots}\nobreak
+}
+
+% Header and footer for when a page split occurs between problem environments
+\newcommand{\exitProblemHeader}[1]{
+\nobreak\extramarks{#1 (cont.)}{#1 continued on next page\ldots}\nobreak
+\nobreak\extramarks{#1}{}\nobreak
+}
+
+\setcounter{secnumdepth}{0} % Removes default section numbers
+\newcounter{homeworkProblemCounter} % Creates a counter to keep track of the number of problems
+
+\newcommand{\homeworkProblemName}{}
+\newenvironment{homeworkProblem}[1][Problem \arabic{homeworkProblemCounter}]{ % Makes a new environment called homeworkProblem which takes 1 argument (custom name) but the default is "Problem #"
+\stepcounter{homeworkProblemCounter} % Increase counter for number of problems
+\renewcommand{\homeworkProblemName}{#1} % Assign \homeworkProblemName the name of the problem
+\section{\homeworkProblemName} % Make a section in the document with the custom problem count
+\enterProblemHeader{\homeworkProblemName} % Header and footer within the environment
+}{
+\exitProblemHeader{\homeworkProblemName} % Header and footer after the environment
+}
+
+\newcommand{\problemAnswer}[1]{ % Defines the problem answer command with the content as the only argument
+\noindent\framebox[\columnwidth][c]{\begin{minipage}{0.98\columnwidth}#1\end{minipage}} % Makes the box around the problem answer and puts the content inside
+}
+
+\newcommand{\homeworkSectionName}{}
+\newenvironment{homeworkSection}[1]{ % New environment for sections within homework problems, takes 1 argument - the name of the section
+\renewcommand{\homeworkSectionName}{#1} % Assign \homeworkSectionName to the name of the section from the environment argument
+\subsection{\homeworkSectionName} % Make a subsection with the custom name of the subsection
+\enterProblemHeader{\homeworkProblemName\ [\homeworkSectionName]} % Header and footer within the environment
+}{
+\enterProblemHeader{\homeworkProblemName} % Header and footer after the environment
+}
+
+%----------------------------------------------------------------------------------------
+%	Lab Name and date
+%----------------------------------------------------------------------------------------
+
+\newcommand{\hmwkTitle}{LTA Supplemental} % Assignment title
+\newcommand{Using IR for the LTA course} % Due date
+\newcommand{\hmwkClass}{AerE 160 Lab} % Course/class
+\newcommand{\hmwkClassTime}{} % Class/lecture time
+\newcommand{\hmwkClassInstructor}{Matthew E. Nelson} % Teacher/lecturer
+\newcommand{\hmwkAuthorName}{} % Your name
+
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\title{
+%\vspace{.1in}
+\textmd{\textbf{\hmwkClass:\ \hmwkTitle}}\\
+\normalsize\vspace{0.1in}\small{Due\ \hmwkDueDate}\\
+\vspace{0.1in}\large{\textit{Instructor: \hmwkClassInstructor\ \ \\ \hmwkClassTime}}
+%\vspace{.25in}
+}
+%\author{\textbf{\hmwkAuthorName}}
+\date{Fall 2015} % Insert date here if you want it to appear below your name
+
+%----------------------------------------------------------------------------------------
+
+
+\begin{document}
+
+\maketitle
+\section{Agenda}
+This writeup will give students a start for sending IR codes in order to ``fix'' the windows on the LTA race course.  In order to do this, students must use the provided Arduino board and IR LED.  Code is provided to the students on how to send the appropriate IR code, but it is left up to the student  to determine how they wish to send it.  \ \\
+
+Students may elect to simply rotate through all 6 of the codes.  If the team decides to do this, they will need to add a delay statement with a minimum of 5 seconds (5000 milliseconds).
+
+
+
+\newpage
+%----------------------------------------------------------------------------------------
+%	PROBLEM 1
+%----------------------------------------------------------------------------------------
+
+% To have just one problem per page, simply put a \clearpage after each problem
+
+
+\begin{homeworkProblem}
+\section{Sphere Area and Volume}
+\subsection{Problem}
+Write a MATLAB program that asks user to enter a radius of a sphere and its units and then finds:
+\begin{enumerate}
+\item the length of the sides of a cube that has the same surface area as the sphere.
+\item the length of the sides of a cube that has the same volume as the sphere.
+\end{enumerate}
+
+Test your program for radius of a sphere = 10 cm and 0.5 m.
+Include output for both cases in your lab report.
+
+\subsection{Hints}
+Use Equation \ref{sphere_area} to calculate the area of a sphere and Equation \ref{sphere_volume} to calculate the volume of a sphere.
+
+\begin{equation}\label{sphere_area}
+SA = 4 \pi * r^2
+\end{equation}
+
+\begin{equation}\label{sphere_volume}
+SV = \frac{(4 \pi * r^3)}{3}
+\end{equation}
+
+  
+\ \\
+
+\textbf{Answer:}\ \\
+Below is the solution code:
+\lstinputlisting[firstline=1,lastline=30,caption=Lab 2 - Problem 1,label=Demo1]{Code/lab3_prob1.m}
+
+\textbf{Output}\ \\
+\problemAnswer{
+Enter radius of a sphere 10\ \\
+Enter units of the radius of a sphere cm\ \\
+You have entered radius of a sphere= 10 cm \ \\
+side of the cube= 14.472 cm to have the same surface area as sphere \ \\
+side of the cube= 16.1199 cm to have the same volume as sphere
+\ \\ \ \\
+Enter radius of a sphere .5\ \\
+Enter units of the radius of a sphere m\ \\
+You have entered radius of a sphere= 0.5 m \ \\
+side of the cube= 0.723601 m to have the same surface area as sphere \ \\
+side of the cube= 0.805996 m to have the same volume as sphere
+}
+\end{homeworkProblem}
+\newpage
+
+%----------------------------------------------------------------------------------------
+%	PROBLEM 2
+%----------------------------------------------------------------------------------------
+
+\begin{homeworkProblem}
+\section{Virtual Lab}
+For this lab we will use a virtual lab at circuits.io.  You should have already created an account for the website.  We will begin by designing our circuit.  To do this log in to your circuits.io account and follow the steps below.
+
+\begin{enumerate}
+\item Click on \emph{+ New} in the upper right hand corner
+\item Click on \emph{New Electronics Lab}
+\end{enumerate}
+
+You should now see a blank breadboard.  Click on the lab name in the upper left hand corner.  Re-name it to \emph{AerE 160 Lab3}.\ \\
+
+Create the circuit as shown in the figure below.  You will add the following parts:
+
+\begin{itemize}
+\item 1 x Arduino
+\item 1 x Light Bulb
+\item 1 x Potentiometer
+\item 1 x Multimeter
+\item 1 x Oscilloscope
+\end{itemize}
+
+You can find each component by clicking on \emph{+ Components} in the upper right hand corner.  You can browse through the components or use the search bar to find them.  Drag each component as shown in the figure.  Please refer to the figure below to wire up the circuit.\ \\ \ \\
+
+\includegraphics[width=12.5cm]{Images/lab3_board.png}
+
+Once the board is wired up, we now need to add our code.  We have given you most of the code which is shown below.  To write your code, click on the button marked \emph{Code Editor}.  A box will then pop up below where you can write your code.
+
+%\begin{itemize}
+\lstinputlisting[firstline=1,lastline=44,caption=Problem 2 Code,label=prob2A]{Code/AerEAnalogDemo_student/AerEAnalogDemo_student.ino}
+%\end{itemize}
+
+Please note that there are two places you need to write code.  It is marked in the code as INSERT YOUR CODE HERE.  \ \\
+
+Once you have completed the code, click on \emph{Upload \& Run} to compile your code and start the simulation.  During the simulation you can click on the potentiometer to change the resistance in the circuit.  You will also need to open the Serial Monitor.  There is a button marked \emph{Serial Monitor} that will open it.\ \\
+
+To finish this lab, please note the value that is printed to the serial monitor and the value that is displayed on the multimeter.  Does the multimeter and the serial display match?  What happens when you move the potentiometer?  What happens to the light bulb as you change the potentiometer?
+
+\subsection{Hints}
+On the bread board, rows A,B,C,D,E are all connected \emph{Vertically}. The row + and - on the top are connected \emph{Horizontally} \ \\
+
+Recall in class that we talked about \emph{analogRead(pin)} to read the analog to digital value.\ \\
+
+To convert the ADC value to an actual value, recall we have values from 1 to 1023, therefore we can divide 5 volts by how many discrete values we have, 1023.  Don't forget this will need to be a float value.  You can define a float value by placing \emph{float} in front of the variable.
+\ \\ \ \\
+\textbf{Answer:}\ \\
+
+Below is the full code.  Also below is the link to the full board and code.
+
+\lstinputlisting[firstline=1,lastline=50,caption=Problem 2 solution,label=prob2sol]{Code/AerEAnalogDemo/AerEAnalogDemo.ino}
+
+\problemAnswer{
+You can see the full board and code at the following link:
+https://123d.circuits.io/circuits/1044454-aere-160-analog-demo
+}
+
+\end{homeworkProblem}
+\newpage
+
+\end{document}

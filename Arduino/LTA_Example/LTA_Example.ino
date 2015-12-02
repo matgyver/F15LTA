@@ -26,6 +26,7 @@ void setup() {
 void loop() {
   // Send a "1" to fix Window 1
   irsend.sendNEC(IR_ONE,32);
+  delay(5000);
   
 
 }

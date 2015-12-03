@@ -3,7 +3,6 @@
  * Matthew E. Nelson
  */
 
-
 // Includes
 #include <IRremote.h>
 
@@ -28,5 +27,4 @@ void loop() {
   irsend.sendNEC(IR_ONE,32);
   delay(5000);
   
-
 }

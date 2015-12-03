@@ -1,7 +1,13 @@
 import pygame, sys, time
 from pygame.locals import *
 import lirc
+import RPi.GPIO as GPIO
+
 pygame.init()
+
+# Setup our button GPIO
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(17, GPIO.IN)
 
 FPS = 30 # frames per second setting
 fpsClock = pygame.time.Clock()
@@ -18,6 +24,11 @@ winy = 10
 direction = 'right'
 sockid = lirc.init("wreckit", blocking = False)
 while True: # the main game loop
+
+    #If the button is pressed break the window
+    if (GPIO.input(17) == True):
+        winImg=pygame.image.load('g66841.png')
+    
     DISPLAYSURF.fill(BLACK)
     DISPLAYSURF.blit(winImg, (winx, winy))
 

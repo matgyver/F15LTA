@@ -1,0 +1,65 @@
+begin
+  button = KEY_1
+  prog = wreckit
+  config = ir_one
+end
+
+begin
+  button = KEY_2
+  prog = wreckit
+  config = ir_two
+end
+
+begin
+  button = KEY_3
+  prog = wreckit
+  config = ir_three
+end
+
+begin
+  button = KEY_4
+  prog = wreckit
+  config = ir_four
+end
+
+begin
+  button = KEY_5
+  prog = wreckit
+  config = ir_five
+end
+
+begin
+  button = KEY_6
+  prog = wreckit
+  config = ir_six
+end
+
+begin
+  button = KEY_7
+  prog = wreckit
+  config = ir_seven
+end
+
+begin
+  button = KEY_8
+  prog = wreckit
+  config = ir_eight
+end
+
+begin
+  button = KEY_9
+  prog = wreckit
+  config = ir_nine
+end
+
+begin
+  button = KEY_0
+  prog = wreckit
+  config = ir_zero
+end
+
+begin
+  button = KEY_POWER
+  prog = wreckit
+  config = ir_pwr
+end
